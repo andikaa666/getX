@@ -17,7 +17,7 @@ class HomeView extends GetView<HomeController> {
         children: [
           Center(
             child: Text(
-              'HomeView is working',
+              'Home is working',
               style: TextStyle(fontSize: 20),
             ),
           ),
@@ -27,21 +27,21 @@ class HomeView extends GetView<HomeController> {
                   onPressed: () {
                     Get.toNamed('/counter');
                   },
-                  child: Text('Go to Counter Page')
+                  child: Text('Counter')
               ),
               SizedBox(height: 10, width: 10),
               ElevatedButton(
                   onPressed: () {
                     Get.toNamed('/formulir');
                   },
-                  child: Text('Go to Biodata Form Page')
+                  child: Text('Biodata')
               ),
               SizedBox(height: 10, width: 10),
               ElevatedButton(
                   onPressed: () {
                     Get.toNamed('/profile');
                   },
-                  child: Text('profile')
+                  child: Text('Profile Account')
               ),
             ],
           )

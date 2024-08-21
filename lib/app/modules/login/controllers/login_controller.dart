@@ -7,11 +7,9 @@ import 'dart:convert';
 import '../../../utils/api.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
-
   final box = GetStorage();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   var isLoading = false.obs;
 
   Future<void> login() async {
@@ -24,17 +22,20 @@ class LoginController extends GetxController {
         'password': passwordController.text,
       },
     );
+
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final token = data['access_token'];
+
       box.write('access_token', token);
-      Get.offAllNamed('/home');
+      Get.offAllNamed('/bottom-menu');
     } else {
-      Get.snackbar('Error', 'Login Failed check ur credentials.',
+      Get.snackbar('Error', 'Login failed. Please check your credentials.',
           snackPosition: SnackPosition.BOTTOM);
     }
     isLoading(false);
   }
+
   @override
   void dispose() {
     emailController.dispose();

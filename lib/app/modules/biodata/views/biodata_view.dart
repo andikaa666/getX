@@ -7,6 +7,7 @@ class BiodataView extends GetView<BiodataController> {
 
   @override
   Widget build(BuildContext context) {
+    final BiodataController controller = Get.put(BiodataController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Formulir Biodata'),
@@ -21,7 +22,7 @@ class BiodataView extends GetView<BiodataController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Isikan isi Biodata di bawah ini:',
+                'Silakan isi Biodata di bawah ini:',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -75,26 +76,28 @@ class BiodataView extends GetView<BiodataController> {
                 ],
               ),
               SizedBox(height: 16),
-              Obx(() => DropdownButtonFormField<String>(
-                    value: controller.agama.value.isEmpty
-                        ? null
-                        : controller.agama.value,
-                    items: <String>['Islam', 'Kristen', 'Hindu', 'Budha']
-                        .map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: controller.setAgama,
-                    decoration: InputDecoration(
-                      labelText: 'Pilih Agama',
-                      prefixIcon: Icon(Icons.accessibility),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+              Obx(
+                () => DropdownButtonFormField<String>(
+                  value: controller.agama.value.isEmpty
+                      ? null
+                      : controller.agama.value,
+                  items: <String>['Islam', 'Kristen', 'Hindu', 'Budha']
+                      .map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: controller.setAgama,
+                  decoration: InputDecoration(
+                    labelText: 'Pilih Agama',
+                    prefixIcon: Icon(Icons.accessibility),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                  )),
+                  ),
+                ),
+              ),
               SizedBox(height: 16),
               Obx(() => TextField(
                     decoration: InputDecoration(
