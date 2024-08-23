@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/tag_model.dart';
-import '../controllers/tag_controller.dart';
+import '../../../../data/kategori_model.dart';
+import '../../controllers/kategori_controller.dart';
 
-class CreateTagView extends StatelessWidget {
-  final TagController controller = Get.find();
+class EditKategoriView extends StatelessWidget {
+  final KategoriController controller = Get.find();
 
-  final TextEditingController namaTagController = TextEditingController();
-  final TextEditingController slugController = TextEditingController();
+  final TextEditingController namaKategoriController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final Data kategori = Get.arguments;
+    namaKategoriController.text = kategori.namaKategori!;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Tag',
+          'Kategori',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -29,7 +31,7 @@ class CreateTagView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Tambah Tag',
+              'Update Kategori',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -38,10 +40,10 @@ class CreateTagView extends StatelessWidget {
             ),
             SizedBox(height: 20),
             TextField(
-              controller: namaTagController,
+              controller: namaKategoriController,
               decoration: InputDecoration(
                 labelText: 'Nama Kategori',
-                labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                labelStyle: TextStyle(color: Colors.deepPurple),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -55,11 +57,11 @@ class CreateTagView extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  final newCategory = DataTag(
-                    namaTag: namaTagController.text,
-                    slug: slugController.text,
+                  final updatedKategori = Data(
+                    id: kategori.id,
+                    namaKategori: namaKategoriController.text,
                   );
-                  controller.addTag(newCategory);
+                  controller.updateKategori(kategori.id!, updatedKategori);
                   Get.back();
                 },
                 style: ElevatedButton.styleFrom(
@@ -70,7 +72,7 @@ class CreateTagView extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Save',
+                  'Update',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

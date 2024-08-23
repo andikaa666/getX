@@ -8,8 +8,8 @@ import '../../../utils/api.dart';
 
 class LoginController extends GetxController {
   final box = GetStorage();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   var isLoading = false.obs;
 
   Future<void> login() async {
@@ -26,9 +26,9 @@ class LoginController extends GetxController {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final token = data['access_token'];
-
+      
       box.write('access_token', token);
-      Get.offAllNamed('/bottom-menu');
+      Get.offAllNamed('/bottom_menu');
     } else {
       Get.snackbar('Error', 'Login failed. Please check your credentials.',
           snackPosition: SnackPosition.BOTTOM);

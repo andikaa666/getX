@@ -1,7 +1,7 @@
 class User {
   bool? success;
   String? message;
-  List<Data>? data;
+  List<DataUser>? data;
 
   User({this.success, this.message, this.data});
 
@@ -9,9 +9,9 @@ class User {
     success = json['success'];
     message = json['message'];
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <DataUser>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(new DataUser.fromJson(v));
       });
     }
   }
@@ -27,19 +27,30 @@ class User {
   }
 }
 
-class Data {
+class DataUser {
   int? id;
-  String? namaTag;
-  String? slug;
+  String? name;
+  String? email;
+  String? password;
+  Null? emailVerifiedAt;
   String? createdAt;
   String? updatedAt;
 
-  Data({this.id, this.namaTag, this.slug, this.createdAt, this.updatedAt});
+  DataUser(
+      {this.id,
+      this.name,
+      this.email,
+      this.password,
+      this.emailVerifiedAt,
+      this.createdAt,
+      this.updatedAt});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  DataUser.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    namaTag = json['nama_tag'];
-    slug = json['slug'];
+    name = json['name'];
+    email = json['email'];
+    password = json['password'];
+    emailVerifiedAt = json['email_verified_at'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -47,8 +58,10 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['nama_tag'] = this.namaTag;
-    data['slug'] = this.slug;
+    data['name'] = this.name;
+    data['email'] = this.email;
+    data['password'] = this.password;
+    data['email_verified_at'] = this.emailVerifiedAt;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     return data;

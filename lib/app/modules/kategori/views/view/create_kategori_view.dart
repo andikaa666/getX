@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/kategori_model.dart';
-import '../controllers/kategori_controller.dart';
+import '../../../../data/kategori_model.dart';
+import '../../controllers/kategori_controller.dart';
 
 class CreateKategoriView extends StatelessWidget {
   final KategoriController controller = Get.find();

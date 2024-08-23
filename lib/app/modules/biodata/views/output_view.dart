@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/biodata_model.dart';
+import 'package:flutter/material.dart';
 
 class OutputView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Ambil data yang dikirim dari formulir
+    // Ambil data yang dikirim dari Formulir
     final BiodataModel formData = Get.arguments;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Output'),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 7, 10, 218),
+        backgroundColor: Colors.teal,
         elevation: 0,
       ),
       body: Padding(

@@ -19,6 +19,9 @@ abstract class Routes {
   static const EDIT_TAG = _Paths.EDIT_TAG;
   static const SHOW_TAG = _Paths.SHOW_TAG;
   static const USER = _Paths.USER;
+  static const CREATE_USER = _Paths.CREATE_USER;
+  static const EDIT_USER = _Paths.EDIT_USER;
+  static const SHOW_USER = _Paths.SHOW_USER;
 }
 
 abstract class _Paths {
@@ -26,6 +29,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const COUNTER = '/counter';
   static const BIODATA = '/biodata';
+  static const OUTPUT = '/output';
   static const REGISTER = '/register';
   static const LOGIN = '/login';
   static const PROFILE = '/profile';
@@ -39,4 +43,7 @@ abstract class _Paths {
   static const EDIT_TAG = '/tag/edit';
   static const SHOW_TAG = '/tag/show';
   static const USER = '/user';
+  static const CREATE_USER = '/user/create';
+  static const EDIT_USER = '/user/edit';
+  static const SHOW_USER = '/user/show';
 }

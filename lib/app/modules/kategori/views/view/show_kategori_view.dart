@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/kategori_model.dart';
+import 'package:myapp/app/data/kategori_model.dart';
+import '../../../../data/kategori_model.dart';
 
 class ShowKategoriView extends StatelessWidget {
   @override

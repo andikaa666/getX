@@ -2,99 +2,105 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../../../data/tag_model.dart';
-import '../../../utils/api.dart';
+import 'package:myapp/app/data/tag_model.dart';
+import 'package:myapp/app/utils/api.dart';
 
 class TagController extends GetxController {
-  var tagList = <DataTag>[].obs;
+  var TagList = <DataTag>[].obs;
   var isLoading = true.obs;
 
   final String baseUrl = '${BaseUrl.api}/tag';
 
   @override
   void onInit() {
-    fetchTages();
+    fetchTag();
     super.onInit();
   }
 
-  // Fetch kategori
-  void fetchTages() async {
+  void fetchTag() async {
     try {
       isLoading(true);
       final response = await http.get(Uri.parse(baseUrl));
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(response.body);
         var tag = Tag.fromJson(jsonResponse);
-        tagList.value = tag.data!;
+        TagList.value = tag.data!;
       } else {
-        Get.snackbar("Error", "Failed to fetch tags");
+        Get.snackbar('Error', 'Failed to load tag');
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to fetch tags: $e");
+      Get.snackbar('Error', 'Failed to load tag: $e');
     } finally {
       isLoading(false);
     }
   }
 
-  // Add kategori
+  // Add Kategori
   Future<void> addTag(DataTag newTag) async {
     try {
       isLoading(true);
       final response = await http.post(
         Uri.parse(baseUrl),
-        headers: {"Content-Type": "application/json"},
+        headers: {'Content-Type': 'application/json'},
         body: json.encode(newTag.toJson()),
       );
-      if (response.statusCode == 201) {
-        fetchTages();
+      if (response.statusCode == 201) { // Status code 201 indicates successful creation
+        fetchTag();
         Get.back();
-        Get.snackbar("Success", "Tag added successfully");
+        Get.snackbar('Success', 'Tag added successfully');
       } else {
-        Get.snackbar("Error", "Failed to add tag");
+        Get.snackbar('Error', 'Failed to add Tag: ${response.reasonPhrase}');
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to add tag: $e");
+      Get.snackbar('Error', 'Failed to add Tag: $e');
     } finally {
       isLoading(false);
     }
   }
 
-  //  Update tag
-  Future<void> updateTag(int id, DataTag updateTag) async {
-    try {
-      isLoading(true);
-      final response = await http.put(
-        Uri.parse('$baseUrl/$id'),
-        headers: {"Content-Type": "application/json"},
-        body: json.encode(updateTag.toJson()),
-      );
-      if (response.statusCode == 200) {
-        fetchTages();
-        Get.back();
-        Get.snackbar("Success", "Tag updated successfully");
-      } else {
-        Get.snackbar("Error", "Failed to update Tag");
-      }
-    } catch (e) {
-      Get.snackbar("Error", "Failed to update tag: $e");
-    } finally {
-      isLoading(false);
+  // Update Kategori
+Future<void> updateTag(int id, DataTag updatedTag) async {
+  try {
+    isLoading(true);
+    final response = await http.put(
+      Uri.parse('$baseUrl/$id'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode(updatedTag.toJson()),
+    );
+    
+    if (response.statusCode == 200 || response.statusCode == 204) {
+      // Status code 200 or 204 indicates success
+      fetchTag();
+      Get.back();
+      Get.snackbar('Success', 'Kategori updated successfully');
+    } else {
+      // Print the response body to understand what went wrong
+      print('Response body: ${response.body}');
+      Get.snackbar('Error', 'Failed to update Kategori: ${response.reasonPhrase}');
     }
+  } catch (e) {
+    // Print the error for debugging purposes
+    print('Error: $e');
+    Get.snackbar('Error', 'Failed to update Kategori: $e');
+  } finally {
+    isLoading(false);
   }
+}
 
-  // Delete tag
+
+  // Delete Kategori
   Future<void> deleteTag(int id) async {
     try {
       isLoading(true);
       final response = await http.delete(Uri.parse('$baseUrl/$id'));
       if (response.statusCode == 200) {
-        fetchTages();
-        Get.snackbar("Success", "Tag deleted successfully");
+        fetchTag();
+        Get.snackbar('Success', 'Tag deleted successfully');
       } else {
-        Get.snackbar("Error", "Failed to delete tag");
+        Get.snackbar('Error', 'Failed to delete Tag: ${response.reasonPhrase}');
       }
     } catch (e) {
-      Get.snackbar("Error", "Failed to delete tag: $e");
+      Get.snackbar('Error', 'Failed to delete Tag: $e');
     } finally {
       isLoading(false);
     }

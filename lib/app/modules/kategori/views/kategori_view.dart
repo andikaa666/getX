@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
+
 import '../controllers/kategori_controller.dart';
 
 class KategoriView extends GetView<KategoriController> {
@@ -18,29 +20,28 @@ class KategoriView extends GetView<KategoriController> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.add, color: Colors.white, size: 28),
+            icon: Icon(Icons.add, color: Colors.white, size: 20),
             onPressed: () => Get.toNamed('/kategori/create'),
           ),
         ],
         elevation: 0,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.deepPurpleAccent,
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
           return Center(child: CircularProgressIndicator());
         }
         return ListView.builder(
-          padding: const EdgeInsets.all(8.0),
-          itemCount: controller.kategoriList.length,
+          itemCount: controller.KategoriList.length,
           itemBuilder: (context, index) {
-            final item = controller.kategoriList[index];
+            final item = controller.KategoriList[index];
             return Card(
               margin: EdgeInsets.symmetric(vertical: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
               elevation: 5,
-              shadowColor: Colors.deepPurple.withOpacity(0.5),
+              shadowColor: Colors.deepPurpleAccent.withOpacity(0.5),
               child: ListTile(
                 contentPadding: EdgeInsets.symmetric(
                   vertical: 15,
@@ -51,31 +52,31 @@ class KategoriView extends GetView<KategoriController> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
+                    color: Colors.deepPurpleAccent,
                   ),
                 ),
                 subtitle: Text(
                   item.slug ?? '',
                   style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey[600],
+                  fontSize: 14,
+                  color: Colors.grey[600],
                   ),
                 ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.edit, color: Colors.deepPurple),
-                      onPressed: () =>
-                          Get.toNamed('/kategori/edit', arguments: item),
+                      icon: Icon(Icons.edit, color: Colors.deepPurpleAccent),
+                      onPressed: () => Get.toNamed('/kategori/edit', arguments: item),
                     ),
                     IconButton(
                       icon: Icon(Icons.delete, color: Colors.red),
                       onPressed: () => controller.deleteKategori(item.id!),
                     ),
-                  ],
+                  ]
+                  ),
+                  onTap: () => Get.toNamed('/kategori/show', arguments: item,
                 ),
-                onTap: () => Get.toNamed('/kategori/show', arguments: item),
               ),
             );
           },

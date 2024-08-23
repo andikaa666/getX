@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/tag_model.dart';
-import '../controllers/tag_controller.dart';
+import 'package:myapp/app/modules/tag/controllers/tag_controller.dart';
+import '../../../../data/tag_model.dart';
 
 class EditTagView extends StatelessWidget {
   final TagController controller = Get.find();
@@ -16,7 +16,7 @@ class EditTagView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'TAG',
+          'Tag',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -31,7 +31,7 @@ class EditTagView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Update tag',
+              'Update Tag',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class EditTagView extends StatelessWidget {
             TextField(
               controller: namaTagController,
               decoration: InputDecoration(
-                labelText: 'Nama Kategori',
+                labelText: 'Nama Tag',
                 labelStyle: TextStyle(color: Colors.deepPurple),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),

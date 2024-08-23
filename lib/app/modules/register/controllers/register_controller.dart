@@ -36,7 +36,6 @@ class RegisterController extends GetxController {
 
   @override
   void dispose() {
-    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();

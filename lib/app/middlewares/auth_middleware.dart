@@ -8,7 +8,7 @@ class AuthMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     final token = box.read('access_token');
-    if (token == null && route != '/login' && route != '/register') {
+    if (token == null && route != '/login' && route != 'register') {
       return const RouteSettings(name: '/login');
     }
     return null;

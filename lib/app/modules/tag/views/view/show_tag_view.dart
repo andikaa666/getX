@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/tag_model.dart';
+
+import '../../../../data/tag_model.dart';
 
 class ShowTagView extends StatelessWidget {
   @override

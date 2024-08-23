@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/kategori_model.dart';
-import '../controllers/kategori_controller.dart';
+import 'package:myapp/app/modules/user/controllers/user_controller.dart';
+import '../../../../data/user_model.dart';
 
-class EditKategoriView extends StatelessWidget {
-  final KategoriController controller = Get.find();
+class EditUserView extends StatelessWidget {
+  final UserController controller = Get.find();
 
-  final TextEditingController namaKategoriController = TextEditingController();
+  final TextEditingController namaUserController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final Data kategori = Get.arguments;
-    namaKategoriController.text = kategori.namaKategori!;
+    final DataUser user = Get.arguments;
+    namaUserController.text = user.name!;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Kategori',
+          'Tag',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -31,7 +33,7 @@ class EditKategoriView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Update Kategori',
+              'Update User',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -40,9 +42,37 @@ class EditKategoriView extends StatelessWidget {
             ),
             SizedBox(height: 20),
             TextField(
-              controller: namaKategoriController,
+              controller: namaUserController,
               decoration: InputDecoration(
-                labelText: 'Nama Kategori',
+                labelText: 'Nama User',
+                labelStyle: TextStyle(color: Colors.deepPurple),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.deepPurple),
+                ),
+              ),
+            ),
+             TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                labelStyle: TextStyle(color: Colors.deepPurple),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.deepPurple),
+                ),
+              ),
+            ),
+             TextField(
+              controller: passwordController,
+              decoration: InputDecoration(
+                labelText: 'Password',
                 labelStyle: TextStyle(color: Colors.deepPurple),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -57,11 +87,11 @@ class EditKategoriView extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  final updatedKategori = Data(
-                    id: kategori.id,
-                    namaKategori: namaKategoriController.text,
+                  final updatedTag = DataUser(
+                    id: user.id,
+                    name: namaUserController.text,
                   );
-                  controller.updateKategori(kategori.id!, updatedKategori);
+                  controller.updateUser(user.id!, updatedTag);
                   Get.back();
                 },
                 style: ElevatedButton.styleFrom(

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/counter_controller.dart';
 
 class CounterView extends GetView<CounterController> {
   const CounterView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final CounterController c = Get.put(CounterController());
@@ -25,19 +24,19 @@ class CounterView extends GetView<CounterController> {
             Obx(() => Text('Di Klik : ${c.bilangan}')),
             Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
+              children: [     
                 ElevatedButton(
-              onPressed: () => c.increment(),
-              child: Icon(Icons.add),
-            ),
-            SizedBox(width: 10),
-            ElevatedButton(
-              onPressed: () => c.decrement(),
-              child: Icon(Icons.remove),
-            ),
+                  onPressed: () => c.decrement(),
+                  child: Icon(Icons.remove),
+                ),
+                SizedBox(width: 10), 
+                ElevatedButton(
+                  onPressed: () => c.increment(),
+                  child: Icon(Icons.add),
+                ),
+               
               ],
             ),
-            
           ],
         ),
       ),

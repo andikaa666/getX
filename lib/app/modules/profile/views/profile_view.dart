@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   @override
   final ProfileController controller = Get.put(ProfileController());
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
