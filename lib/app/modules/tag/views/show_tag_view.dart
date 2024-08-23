@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../data/kategori_model.dart';
+import '../../../data/tag_model.dart';
 
 class ShowTagView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Data kategori = Get.arguments;
+    final DataTag tag = Get.arguments;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Kategori',
+          'Tag',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ class ShowTagView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Nama Kategori: ${kategori.namaKategori}',
+                  'Nama Tag: ${tag.namaTag}',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class ShowTagView extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Slug: ${kategori.slug}',
+                  'Slug: ${tag.slug}',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.deepPurple[700],
@@ -50,7 +50,7 @@ class ShowTagView extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Created At: ${kategori.createdAt}',
+                  'Created At: ${tag.createdAt}',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.deepPurple[700],
@@ -58,7 +58,7 @@ class ShowTagView extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Updated At: ${kategori.updatedAt}',
+                  'Updated At: ${tag.updatedAt}',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.deepPurple[700],

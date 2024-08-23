@@ -1,17 +1,17 @@
-class Tag {
+class User {
   bool? success;
   String? message;
-  List<DataTag>? data;
+  List<Data>? data;
 
-  Tag({this.success, this.message, this.data});
+  User({this.success, this.message, this.data});
 
-  Tag.fromJson(Map<String, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json) {
     success = json['success'];
     message = json['message'];
     if (json['data'] != null) {
-      data = <DataTag>[];
+      data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new DataTag.fromJson(v));
+        data!.add(new Data.fromJson(v));
       });
     }
   }
@@ -27,16 +27,16 @@ class Tag {
   }
 }
 
-class DataTag {
+class Data {
   int? id;
   String? namaTag;
   String? slug;
   String? createdAt;
   String? updatedAt;
 
-  DataTag({this.id, this.namaTag, this.slug, this.createdAt, this.updatedAt});
+  Data({this.id, this.namaTag, this.slug, this.createdAt, this.updatedAt});
 
-  DataTag.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     namaTag = json['nama_tag'];
     slug = json['slug'];

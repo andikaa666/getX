@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:myapp/app/modules/tag/views/create_tag_view.dart';
+import 'package:myapp/app/modules/tag/views/edit_tag_view.dart';
+import 'package:myapp/app/modules/tag/views/show_tag_view.dart';
 
 import '../middlewares/auth_middleware.dart';
 import '../modules/biodata/bindings/biodata_binding.dart';
@@ -98,13 +101,15 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.TAG,
-      page: () => const TagView(),
+      page: () => TagView(),
       binding: TagBinding(),
+      middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: Routes.CREATE_TAG,
       page: () => CreateTagView(),
       binding: TagBinding(),
+      middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: Routes.EDIT_TAG,
@@ -122,6 +127,24 @@ class AppPages {
       name: _Paths.USER,
       page: () => const UserView(),
       binding: UserBinding(),
+    ),
+    GetPage(
+      name: Routes.CREATE_TAG,
+      page: () => CreateTagView(),
+      binding: TagBinding(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: Routes.EDIT_TAG,
+      page: () => EditTagView(),
+      binding: TagBinding(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: Routes.SHOW_TAG,
+      page: () => ShowTagView(),
+      binding: TagBinding(),
+      middlewares: [AuthMiddleware()],
     ),
   ];
 }

@@ -41,7 +41,7 @@ class CreateTagView extends StatelessWidget {
               controller: namaTagController,
               decoration: InputDecoration(
                 labelText: 'Nama Kategori',
-                labelStyle: TextStyle(color: Colors.deepPurple),
+                labelStyle: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),

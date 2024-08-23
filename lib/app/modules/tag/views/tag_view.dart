@@ -23,7 +23,7 @@ class TagView extends GetView<TagController> {
           ),
         ],
         elevation: 0,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color.fromARGB(255, 196, 141, 213),
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
@@ -40,7 +40,7 @@ class TagView extends GetView<TagController> {
                 borderRadius: BorderRadius.circular(15),
               ),
               elevation: 5,
-              shadowColor: Colors.deepPurple.withOpacity(0.5),
+              shadowColor: Color.fromARGB(255, 219, 106, 223).withOpacity(0.5),
               child: ListTile(
                 contentPadding: EdgeInsets.symmetric(
                   vertical: 15,
@@ -51,7 +51,7 @@ class TagView extends GetView<TagController> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
+                    color: Color.fromARGB(255, 231, 107, 220),
                   ),
                 ),
                 subtitle: Text(
@@ -65,7 +65,7 @@ class TagView extends GetView<TagController> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.edit, color: Colors.deepPurple),
+                      icon: Icon(Icons.edit, color: Color.fromARGB(255, 38, 0, 255)),
                       onPressed: () =>
                           Get.toNamed('/tag/edit', arguments: item),
                     ),
